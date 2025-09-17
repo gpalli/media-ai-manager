@@ -1,0 +1,30 @@
+# Core dependencies from the original implementation
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
+streamlit>=1.28.0
+ollama>=0.1.7
+
+# Enhanced for media files
+pillow>=10.0.0
+opencv-python>=4.8.0
+exifread>=3.0.0
+python-magic>=0.4.27
+
+# Video processing
+moviepy>=1.0.3
+imageio>=2.31.0
+
+# Database and search enhancements
+chromadb>=0.4.0
+
+# Additional utilities
+tqdm>=4.65.0
+pathlib2>=2.3.7
+psutil>=5.9.0
+pyyaml>=6.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Web interface enhancements
+flask>=2.3.0
+flask-cors>=4.0.0

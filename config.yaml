@@ -1,0 +1,84 @@
+app:
+  debug: true
+  name: MediaMind AI
+  version: 2.0.0
+database:
+  backup_enabled: true
+  backup_interval_hours: 24
+  path: ./data/mediadb.sqlite
+  type: sqlite
+  vector_store: ./data/faiss_index
+media:
+  batch_size: 8
+  excluded_paths:
+  - /System
+  - /Library
+  - /.Trash
+  - /node_modules
+  - /.git
+  max_file_size_mb: 500
+  parallel_workers: 4
+  preview_size:
+  - 800
+  - 600
+  scan_paths:
+  - ./test_media
+  supported_formats:
+    documents:
+    - .pdf
+    - .docx
+    - .pptx
+    - .txt
+    - .md
+    images:
+    - .jpg
+    - .jpeg
+    - .png
+    - .gif
+    - .bmp
+    - .tiff
+    - .webp
+    - .heic
+    - .raw
+    - .dng
+    videos:
+    - .mp4
+    - .avi
+    - .mov
+    - .mkv
+    - .wmv
+    - .flv
+    - .webm
+    - .m4v
+  thumbnail_size:
+  - 300
+  - 300
+ollama:
+  base_url: http://localhost:11434
+  text_model: llama3.1:latest
+  timeout: 120
+  vision_analysis:
+    analyze_scenes: true
+    detect_objects: true
+    enabled: true
+    extract_tags: true
+    extract_text: true
+    generate_descriptions: true
+  vision_model: llama3.1:latest
+performance:
+  batch_processing: true
+  cache_size_mb: 1024
+  enable_gpu: false
+  thumbnail_cache_days: 30
+search:
+  chunk_overlap: 50
+  chunk_size: 500
+  embedding_model: sentence-transformers/msmarco-bert-base-dot-v5
+  faiss_dimension: 768
+  max_results: 20
+  similarity_threshold: 0.7
+web:
+  debug: true
+  host: localhost
+  port: 8501
+  title: MediaMind AI - Local Media Search Engine
