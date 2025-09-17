@@ -1,157 +1,79 @@
-# 🚀 MediaMind AI - Quick Start Guide
+# 🚀 Quick Start Guide
 
-## ⚡ Get Started in 5 Minutes
+Get MediaMind AI up and running in 5 minutes!
 
-### 1. Prerequisites
-- Python 3.8+
-- Internet connection (for downloading AI models)
+## Prerequisites
 
-### 2. Installation
+- **Python 3.8+**
+- **Ollama** installed and running
+- **Git** (for cloning)
+
+## 1. Clone & Setup
 
 ```bash
-# 1. Install Ollama
-curl -fsSL https://ollama.com/install.sh | sh
+# Clone the repository
+git clone https://github.com/gpalli/media-ai-manager.git
+cd media-ai-manager
 
-# 2. Start Ollama
-ollama serve
+# Create virtual environment
+python -m venv media-ai-manager
+source media-ai-manager/bin/activate  # On Windows: media-ai-manager\Scripts\activate
 
-# 3. Install AI models (in another terminal)
-ollama pull llava:latest
-ollama pull llama3.1:latest
-
-# 4. Install Python dependencies
+# Install dependencies
 pip install -r requirements.txt
-
-# 5. Run setup wizard
-python setup.py
 ```
 
-### 3. Quick Test
+## 2. Install Ollama & Models
 
 ```bash
-# Test the system
-python test_system.py
-
-# Start web interface
-python run.py web
-```
-
-### 4. Configure Scan Paths
-
-Edit `config.yaml` and update the scan paths:
-
-```yaml
-media:
-  scan_paths:
-    - "/Users/yourname/Pictures"
-    - "/Users/yourname/Desktop"
-    - "/Users/yourname/Downloads"
-```
-
-### 5. Index Your Media
-
-```bash
-# Scan and index your media
-python run.py scan
-
-# Or scan specific directory
-python run.py scan /path/to/your/photos
-```
-
-### 6. Search Your Media
-
-```bash
-# Search via command line
-python run.py search "photos of mountains"
-
-# Or use the web interface
-python run.py web
-# Then go to http://localhost:8501
-```
-
-## 🎯 Example Usage
-
-### Web Interface
-1. Run `python run.py web`
-2. Open http://localhost:8501
-3. Go to "Scan & Index" tab
-4. Add your media directories
-5. Click "Scan All Paths"
-6. Go to "Search" tab
-7. Search for "photos of people" or "outdoor scenes"
-
-### Command Line
-```bash
-# Search for specific content
-python main.py --query "videos from vacation"
-
-# Scan new directories
-python main.py --scan /path/to/new/photos
-
-# Show statistics
-python main.py --stats
-```
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-**"Ollama not found"**
-```bash
-# Install Ollama
+# Install Ollama (if not installed)
 curl -fsSL https://ollama.com/install.sh | sh
-ollama serve
-```
 
-**"Model not found"**
-```bash
-# Pull required models
-ollama pull llava:latest
+# Start Ollama
+ollama serve
+
+# Pull required models (in another terminal)
 ollama pull llama3.1:latest
 ```
 
-**"No media files found"**
-- Check scan paths in config.yaml
-- Verify directories exist
-- Check file format support
+## 3. Configure & Test
 
-**"Slow processing"**
-- Use smaller models: `llava:7b` instead of `llava:latest`
-- Reduce batch size in config.yaml
-- Limit file sizes
+```bash
+# Run setup wizard
+python main.py --setup
 
-### Getting Help
+# Test with sample media
+mkdir test_media
+# Add some photos to test_media/
 
-1. Check the full README.md
-2. Run `python test_system.py` to diagnose issues
-3. Check logs for error messages
-4. Ensure Ollama is running: `ollama list`
+# Scan and index
+python main.py --scan test_media
 
-## 📁 Project Structure
-
-```
-media-ai-manager/
-├── core/                    # Core modules
-│   ├── config_loader.py    # Configuration management
-│   ├── media_processor.py  # Media file processing
-│   ├── ai_analyzer.py      # AI analysis with Ollama
-│   ├── database_manager.py # Database and vector storage
-│   └── search_engine.py    # Main search engine
-├── web/                     # Web interface
-│   └── app.py              # Streamlit web app
-├── data/                    # Database and cache
-├── cache/                   # Temporary files
-├── config.yaml             # Configuration
-├── requirements.txt        # Python dependencies
-├── main.py                 # Main entry point
-├── run.py                  # Simple launcher
-├── setup.py                # Setup wizard
-├── test_system.py          # System tests
-└── README.md               # Full documentation
+# Search
+python main.py --query "nature"
 ```
 
-## 🎉 You're Ready!
+## 4. Start Web Interface
 
-Your MediaMind AI system is now ready to help you find and organize your media files with the power of AI!
+```bash
+# Start the web UI
+streamlit run web/app.py
+```
 
-For more detailed information, see the full README.md file.
+Open your browser to `http://localhost:8501`
+
+## 🎯 What's Next?
+
+- **Add your media**: Update `config.yaml` with your photo/video directories
+- **Explore features**: Use the web interface to search and organize
+- **Read the docs**: Check out [README.md](README.md) for detailed documentation
+
+## 🆘 Need Help?
+
+- Check [troubleshooting](README.md#troubleshooting) in the main README
+- Open an [issue](https://github.com/gpalli/media-ai-manager/issues) on GitHub
+- Read the [contributing guide](CONTRIBUTING.md)
+
+---
+
+**Happy searching! 🧠✨**
